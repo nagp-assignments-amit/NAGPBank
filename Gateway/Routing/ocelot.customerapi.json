@@ -1,0 +1,11 @@
+﻿{
+  "ReRoutes": [
+    {
+      "ServiceName": "customerservice",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/customer-api/{catchAll}",
+      "DownstreamPathTemplate": "/api/{catchAll}",
+      "DownstreamScheme": "http"
+    }
+  ]
+}

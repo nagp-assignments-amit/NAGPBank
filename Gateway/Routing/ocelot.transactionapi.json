@@ -1,0 +1,11 @@
+﻿{
+  "ReRoutes": [
+    {
+      "ServiceName": "transactionservice",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/transaction-api/{catchAll}",
+      "DownstreamPathTemplate": "/api/{catchAll}",
+      "DownstreamScheme": "http"
+    }
+  ]
+}
