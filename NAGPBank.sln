@@ -3,11 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{A1A03AB9-8419-4D95-A6B9-8E82EB8A5C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.csproj", "{A1A03AB9-8419-4D95-A6B9-8E82EB8A5C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionAPI", "TransactionAPI\TransactionAPI.csproj", "{7D9A8444-386E-4B63-BC07-F3A6CF3BEC55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionAPI", "TransactionAPI\TransactionAPI.csproj", "{7D9A8444-386E-4B63-BC07-F3A6CF3BEC55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer", "Customer\Customer.csproj", "{DB5792B3-D61A-4D82-B54F-5E01F9DF777E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAPI", "CustomerAPI\CustomerAPI.csproj", "{FDB10459-AADF-4EA3-BE65-C29A2F70D8D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChequeBookAPI", "ChequeBookAPI\ChequeBookAPI.csproj", "{8000D721-1C7F-4A0B-A006-5F47CD89FA96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountAPI", "AccountAPI\AccountAPI.csproj", "{8CC94ADE-FD9A-4A38-A327-F096FFD96BA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NAGPBank.CrossCutting", "NAGPBank.CrossCutting\NAGPBank.CrossCutting.csproj", "{09DBCE6A-03D5-4E39-862E-F8AFA45713AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAGPBank.Data", "NAGPBank.Data\NAGPBank.Data.csproj", "{13AF1E78-53C0-4500-93BE-CF9521769B0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +31,26 @@ Global
 		{7D9A8444-386E-4B63-BC07-F3A6CF3BEC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D9A8444-386E-4B63-BC07-F3A6CF3BEC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D9A8444-386E-4B63-BC07-F3A6CF3BEC55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB5792B3-D61A-4D82-B54F-5E01F9DF777E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB5792B3-D61A-4D82-B54F-5E01F9DF777E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB5792B3-D61A-4D82-B54F-5E01F9DF777E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB5792B3-D61A-4D82-B54F-5E01F9DF777E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB10459-AADF-4EA3-BE65-C29A2F70D8D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB10459-AADF-4EA3-BE65-C29A2F70D8D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB10459-AADF-4EA3-BE65-C29A2F70D8D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB10459-AADF-4EA3-BE65-C29A2F70D8D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8000D721-1C7F-4A0B-A006-5F47CD89FA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8000D721-1C7F-4A0B-A006-5F47CD89FA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8000D721-1C7F-4A0B-A006-5F47CD89FA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8000D721-1C7F-4A0B-A006-5F47CD89FA96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC94ADE-FD9A-4A38-A327-F096FFD96BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC94ADE-FD9A-4A38-A327-F096FFD96BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC94ADE-FD9A-4A38-A327-F096FFD96BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC94ADE-FD9A-4A38-A327-F096FFD96BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09DBCE6A-03D5-4E39-862E-F8AFA45713AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DBCE6A-03D5-4E39-862E-F8AFA45713AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DBCE6A-03D5-4E39-862E-F8AFA45713AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DBCE6A-03D5-4E39-862E-F8AFA45713AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13AF1E78-53C0-4500-93BE-CF9521769B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13AF1E78-53C0-4500-93BE-CF9521769B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13AF1E78-53C0-4500-93BE-CF9521769B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13AF1E78-53C0-4500-93BE-CF9521769B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

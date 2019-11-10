@@ -5,15 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
-using Ocelot.Provider.Eureka;
+using NAGPBank.CrossCutting.Dto;
+using NAGPBank.CrossCutting.Error;
+using NAGPBank.CrossCutting.Types;
+using NAGPBank.Data;
+using NAGPBank.Data.Repository;
+using Steeltoe.Discovery.Client;
 
-namespace Gateway
+namespace ChequeBookAPI
 {
     public class Startup
     {
@@ -27,8 +31,15 @@ namespace Gateway
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOcelot().AddEureka();
+            services.Configure<ConfigSettings>(Configuration);
+            services.AddDiscoveryClient(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            var dbName = Configuration.GetValue<string>(ConfigKey.DbName);
+            services.AddDbContext<BankDBContext>(options => options.UseInMemoryDatabase(databaseName: dbName));
+
+            // Repository Bindings
+            services.AddScoped<ChequeBookRepository, ChequeBookRepository>();
         }
 
         
@@ -38,7 +49,8 @@ namespace Gateway
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseOcelot().Wait();
+            app.UseMiddleware<BankExceptionMiddleware>();
+            app.UseDiscoveryClient();
             app.UseMvc();
         }
     }

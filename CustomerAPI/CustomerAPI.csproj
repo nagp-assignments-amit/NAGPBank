@@ -10,11 +10,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="2.3.0" />
     <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NAGPBank.CrossCutting\NAGPBank.CrossCutting.csproj" />
     <ProjectReference Include="..\NAGPBank.Data\NAGPBank.Data.csproj" />
   </ItemGroup>
 

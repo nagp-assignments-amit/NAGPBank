@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 
-namespace TransactionAPI
+namespace AccountAPI
 {
     public class Program
     {
