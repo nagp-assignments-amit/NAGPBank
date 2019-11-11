@@ -15,6 +15,8 @@ using NAGPBank.CrossCutting.Error;
 using NAGPBank.CrossCutting.Types;
 using NAGPBank.Data;
 using NAGPBank.Data.Repository;
+using Serilog;
+using Serilog.Events;
 using Steeltoe.Discovery.Client;
 
 namespace ChequeBookAPI
@@ -24,6 +26,14 @@ namespace ChequeBookAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Log.Logger = new LoggerConfiguration()
+             // `LogEventLevel` requires `using Serilog.Events;`
+             .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+             .Enrich.FromLogContext()
+             .WriteTo.Console()
+             .WriteTo.Seq(
+                 Environment.GetEnvironmentVariable("SEQ_URL") ?? "http://localhost:5341")
+             .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -49,6 +59,7 @@ namespace ChequeBookAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSerilogRequestLogging();
             app.UseMiddleware<BankExceptionMiddleware>();
             app.UseDiscoveryClient();
             app.UseMvc();

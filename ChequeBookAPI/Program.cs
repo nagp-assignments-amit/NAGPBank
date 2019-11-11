@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace ChequeBookAPI
@@ -20,6 +21,7 @@ namespace ChequeBookAPI
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .UseSerilog()
             .ConfigureAppConfiguration((webHostBuilderContext, configurationBuilder) =>
             {
                 var hostingEnvironment = webHostBuilderContext.HostingEnvironment;

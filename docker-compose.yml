@@ -1,0 +1,80 @@
+version: '3.4'
+
+services:
+  nagp-seq:
+    image: datalust/seq
+    container_name: nagp-seq
+    ports:
+        - "5341:80"
+    networks:
+        - docker-network
+        
+  nagp-bank-config-server:
+    image: amit0511/nagp-bank-config-server
+    container_name: nagp-bank-config-server
+    ports:
+        - "8888:8888"
+    networks:
+        - docker-network
+        
+  nagp-bank-eureka-server:
+    image: amit0511/nagp-bank-eureka-server
+    container_name: nagp-bank-eureka-server
+    ports:
+        - "8761:8761"
+    networks:
+        - docker-network
+      
+  accountapi:
+    image: ${DOCKER_REGISTRY-}accountapi
+    build:
+      context: .
+      dockerfile: AccountAPI/Dockerfile
+    ports:
+        - "6002:6002"
+    networks:
+      - docker-network
+
+  chequebookapi:
+    image: ${DOCKER_REGISTRY-}chequebookapi
+    build:
+      context: .
+      dockerfile: ChequeBookAPI/Dockerfile
+    ports:
+        - "6004:6004"
+    networks:
+        - docker-network
+
+  customerapi:
+    image: ${DOCKER_REGISTRY-}customerapi
+    build:
+      context: .
+      dockerfile: CustomerAPI/Dockerfile
+    ports:
+        - "6001:6001"
+    networks:
+        - docker-network
+
+  gateway:
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: .
+      dockerfile: Gateway/Dockerfile
+    ports:
+        - "6000:6000"
+    networks:
+        - docker-network
+
+  transactionapi:
+    image: ${DOCKER_REGISTRY-}transactionapi
+    build:
+      context: .
+      dockerfile: TransactionAPI/Dockerfile
+    ports:
+        - "6003:6003"
+    networks:
+        - docker-network     
+        
+networks:
+  docker-network:
+    driver: bridge

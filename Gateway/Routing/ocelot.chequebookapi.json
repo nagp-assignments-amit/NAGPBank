@@ -1,0 +1,11 @@
+﻿{
+  "ReRoutes": [
+    {
+      "ServiceName": "chequebookservice",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/chequebook-api/{catchAll}",
+      "DownstreamPathTemplate": "/api/{catchAll}",
+      "DownstreamScheme": "http"
+    }
+  ]
+}
